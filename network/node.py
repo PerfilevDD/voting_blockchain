@@ -9,3 +9,8 @@ class Node:
     def add_peer(self, peer):
         if peer not in self.peers:
             self.peers.append(peer)
+
+    def broadcast_block(self, block):
+        self.blockchain.chain.append(block)
+        for peer in self.peers:
+            peer.blockchain.chain.append(block)
